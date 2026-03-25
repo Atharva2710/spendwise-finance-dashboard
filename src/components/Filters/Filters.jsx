@@ -45,7 +45,7 @@ const Filters = ({ filterType, setFilterType, filterCategory, setFilterCategory,
   ];
 
   return (
-    <div className="card" style={{ display: 'flex', flexWrap: 'wrap', gap: '1.5rem', alignItems: 'flex-end', padding: '1.5rem' }}>
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.5rem', alignItems: 'flex-end', padding: '1.5rem', borderTop: '1px solid var(--border-color)', background: 'var(--surface-hover)' }}>
       <SelectFilter label="Transaction Type" value={filterType} onChange={setFilterType} options={typeOptions} />
       <SelectFilter label="Category" value={filterCategory} onChange={setFilterCategory} options={categoryOptions} />
       <SelectFilter label="Date Range" value={dateRange} onChange={setDateRange} options={dateOptions} />

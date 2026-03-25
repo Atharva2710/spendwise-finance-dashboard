@@ -20,7 +20,7 @@ const Card = ({ title, amount, icon, color, delay }) => (
     <div style={{
       width: '3.5rem',
       height: '3.5rem',
-      borderRadius: '50%',
+      borderRadius: 'var(--radius-lg)',
       background: `${color}15`,
       color: color,
       display: 'flex',

@@ -72,7 +72,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .app-container {
   display: flex;
   min-height: 100vh;
-  background-color: var(--bg-main);
+  background-color: var(--bg-sidebar);
 }
 
 .main-content {
@@ -80,7 +80,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding: 1.5rem;
   width: 100%;
   max-width: 1600px;
-  margin: 0 auto;
+  background-color: var(--bg-main);
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  border-radius: var(--radius-2xl);
+  box-shadow: -10px 0 25px -5px rgba(0, 0, 0, 0.4);
+  overflow-y: auto;
+  position: relative;
+}
+
+@media (max-width: 767px) {
+  .main-content {
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
 }
 
 @media (min-width: 768px) {

@@ -20,7 +20,6 @@ const Sidebar = () => {
     <aside style={{
       width: '280px',
       background: 'var(--bg-sidebar)',
-      borderRight: '1px solid var(--border-sidebar)',
       padding: '2rem 1.5rem',
       display: 'flex',
       flexDirection: 'column',

@@ -49,17 +49,18 @@ const Transactions = () => {
         }
       />
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginBottom: '2rem' }}>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div className="card" style={{ marginBottom: '2.5rem', padding: 0 }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.5rem', justifyContent: 'space-between', alignItems: 'center', padding: '1.5rem' }}>
           <div style={{ flex: '1 1 300px' }}>
             <SearchBar onSearch={setSearchTerm} />
           </div>
-          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
             <SortDropdown value={sortBy} onChange={setSortBy} />
-            <div style={{ display: 'flex', background: 'var(--surface-color)', border: '1px solid var(--border-color)', borderRadius: 'var(--radius-md)', padding: '0.25rem' }}>
+            <div style={{ width: '1px', height: '32px', background: 'var(--border-color)' }}></div>
+            <div style={{ display: 'flex', background: 'var(--bg-main)', border: '1px solid var(--border-color)', borderRadius: 'var(--radius-md)', padding: '0.25rem' }}>
               <button 
                 onClick={() => setViewMode('table')}
-                style={{ padding: '0.5rem', background: viewMode === 'table' ? 'var(--bg-color)' : 'transparent', borderRadius: '0.25rem', color: viewMode === 'table' ? 'var(--primary-color)' : 'var(--text-muted)' }}
+                style={{ padding: '0.5rem', background: viewMode === 'table' ? 'var(--surface-color)' : 'transparent', borderRadius: '0.25rem', color: viewMode === 'table' ? 'var(--primary-color)' : 'var(--text-muted)', boxShadow: viewMode === 'table' ? 'var(--shadow-sm)' : 'none', transition: 'all 0.2s ease' }}
                 aria-label="Table View"
                 title="Table View"
               >
@@ -67,7 +68,7 @@ const Transactions = () => {
               </button>
               <button 
                 onClick={() => setViewMode('card')}
-                style={{ padding: '0.5rem', background: viewMode === 'card' ? 'var(--bg-color)' : 'transparent', borderRadius: '0.25rem', color: viewMode === 'card' ? 'var(--primary-color)' : 'var(--text-muted)' }}
+                style={{ padding: '0.5rem', background: viewMode === 'card' ? 'var(--surface-color)' : 'transparent', borderRadius: '0.25rem', color: viewMode === 'card' ? 'var(--primary-color)' : 'var(--text-muted)', boxShadow: viewMode === 'card' ? 'var(--shadow-sm)' : 'none', transition: 'all 0.2s ease' }}
                 aria-label="Card View"
                 title="Card View"
               >

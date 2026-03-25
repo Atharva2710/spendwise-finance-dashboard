@@ -14,34 +14,35 @@ const TransactionCard = ({ transaction, onEdit, onDelete }) => {
       whileHover={{ y: -2 }}
       className="card"
       style={{
-        padding: '1.25rem',
+        padding: '1.5rem',
         display: 'flex',
         flexDirection: 'column',
-        gap: '1rem'
+        gap: '1.25rem',
+        borderLeft: isIncome ? '4px solid var(--success-color)' : '4px solid var(--danger-color)'
       }}
     >
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <div style={{
-            width: '2.5rem', height: '2.5rem', borderRadius: '50%',
-            background: isIncome ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+            width: '3rem', height: '3rem', borderRadius: 'var(--radius-md)',
+            background: isIncome ? 'var(--success-light)' : 'var(--danger-light)',
             color: isIncome ? 'var(--success-color)' : 'var(--danger-color)',
             display: 'flex', alignItems: 'center', justifyContent: 'center'
           }}>
-            {isIncome ? <FiArrowUpRight size={20} /> : <FiArrowDownRight size={20} />}
+            {isIncome ? <FiArrowUpRight size={22} /> : <FiArrowDownRight size={22} />}
           </div>
           <div>
-            <h4 style={{ fontWeight: 600, color: 'var(--text-main)', marginBottom: '0.25rem' }}>{transaction.title}</h4>
-            <span style={{ fontSize: '0.875rem', color: 'var(--text-muted)', background: 'var(--bg-color)', padding: '0.125rem 0.5rem', borderRadius: '1rem' }}>
+            <h4 style={{ fontWeight: 600, fontSize: '1.05rem', color: 'var(--text-main)', marginBottom: '0.25rem', lineHeight: 1.2 }}>{transaction.title}</h4>
+            <span className="badge" style={{ background: 'var(--surface-hover)', border: '1px solid var(--border-color)', color: 'var(--text-muted)' }}>
               {transaction.category}
             </span>
           </div>
         </div>
         <div style={{ textAlign: 'right' }}>
-          <p style={{ fontWeight: 700, color: isIncome ? 'var(--success-color)' : 'var(--text-main)', fontSize: '1.125rem' }}>
+          <p style={{ fontWeight: 700, color: 'var(--text-main)', fontSize: '1.25rem', letterSpacing: '-0.02em' }}>
             {isIncome ? '+' : '-'}{formatCurrency(transaction.amount)}
           </p>
-          <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>{formatDate(transaction.date)}</p>
+          <p style={{ fontSize: '0.875rem', color: 'var(--text-tertiary)', fontWeight: 500 }}>{formatDate(transaction.date)}</p>
         </div>
       </div>
 
@@ -58,11 +59,11 @@ const TransactionCard = ({ transaction, onEdit, onDelete }) => {
         </div>
       )}
 
-      <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.5rem', marginTop: '0.5rem' }}>
-        <button onClick={() => onEdit(transaction)} style={{ padding: '0.5rem', color: 'var(--text-muted)', background: 'var(--bg-color)', borderRadius: 'var(--radius-md)', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'background 0.2s' }} aria-label="Edit">
+      <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.5rem', marginTop: 'auto', paddingTop: '1rem' }}>
+        <button onClick={() => onEdit(transaction)} className="btn-icon-only" aria-label="Edit">
           <FiEdit2 size={16} />
         </button>
-        <button onClick={() => onDelete(transaction.id)} style={{ padding: '0.5rem', color: 'var(--danger-color)', background: 'rgba(239, 68, 68, 0.1)', borderRadius: 'var(--radius-md)', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'background 0.2s' }} aria-label="Delete">
+        <button onClick={() => onDelete(transaction.id)} className="btn-icon-only" style={{ color: 'var(--danger-color)' }} aria-label="Delete">
           <FiTrash2 size={16} />
         </button>
       </div>
