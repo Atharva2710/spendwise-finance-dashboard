@@ -20,20 +20,8 @@ const SearchBar = ({ onSearch, placeholder = "Search title or notes..." }) => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder={placeholder}
-        style={{
-          width: '100%',
-          padding: '0.75rem 1rem 0.75rem 2.75rem',
-          borderRadius: 'var(--radius-lg)',
-          border: '1px solid var(--border-color)',
-          background: 'var(--surface-color)',
-          color: 'var(--text-main)',
-          fontSize: '0.95rem',
-          outline: 'none',
-          boxShadow: 'var(--shadow-sm)',
-          transition: 'border-color 0.2s'
-        }}
-        onFocus={(e) => e.target.style.borderColor = 'var(--primary-color)'}
-        onBlur={(e) => e.target.style.borderColor = 'var(--border-color)'}
+        className="input-field"
+        style={{ paddingLeft: '2.75rem', paddingRight: '2.5rem' }}
       />
       {query && (
         <button

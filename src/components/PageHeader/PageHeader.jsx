@@ -17,8 +17,8 @@ const PageHeader = ({ title, subtitle, action }) => {
       }}
     >
       <div>
-        <h1 style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: '0.25rem' }}>{title}</h1>
-        {subtitle && <p style={{ color: 'var(--text-muted)', fontSize: '1rem' }}>{subtitle}</p>}
+        <h1 style={{ fontSize: '2.25rem', fontWeight: 700, color: 'var(--text-main)', letterSpacing: '-0.03em', marginBottom: '0.5rem', lineHeight: 1 }}>{title}</h1>
+        {subtitle && <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', fontWeight: 500 }}>{subtitle}</p>}
       </div>
       {action && <div style={{ display: 'flex', gap: '1rem' }}>{action}</div>}
     </motion.div>

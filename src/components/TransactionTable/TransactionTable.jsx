@@ -24,9 +24,9 @@ const TransactionTable = ({ transactions, onEdit, onDelete }) => {
           </thead>
           <tbody>
             {transactions.map((t, index) => (
-              <tr key={t.id} style={{ 
+              <tr key={t.id} className="table-row" style={{ 
                 borderBottom: index === transactions.length - 1 ? 'none' : '1px solid var(--border-color)', 
-                transition: 'background 0.2s' 
+                transition: 'all 0.2s ease'
               }}>
                 <td style={{ padding: '1rem 1.5rem' }}>
                   <div style={{ fontWeight: 600, color: 'var(--text-main)', marginBottom: '0.25rem' }}>{t.title}</div>
@@ -59,6 +59,9 @@ const TransactionTable = ({ transactions, onEdit, onDelete }) => {
           </tbody>
         </table>
       </div>
+      <style>{`
+        .table-row:hover { background-color: var(--surface-hover); cursor: default; }
+      `}</style>
     </div>
   );
 };

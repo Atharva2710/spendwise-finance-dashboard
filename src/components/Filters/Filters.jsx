@@ -7,16 +7,8 @@ const SelectFilter = ({ label, value, onChange, options }) => (
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      style={{
-        padding: '0.625rem 1rem',
-        borderRadius: 'var(--radius-md)',
-        border: '1px solid var(--border-color)',
-        background: 'var(--surface-color)',
-        color: 'var(--text-main)',
-        outline: 'none',
-        cursor: 'pointer',
-        minWidth: '150px'
-      }}
+      className="input-field"
+      style={{ minWidth: '160px', padding: '0.625rem 1rem' }}
     >
       {options.map((opt) => (
         <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -53,7 +45,7 @@ const Filters = ({ filterType, setFilterType, filterCategory, setFilterCategory,
   ];
 
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.25rem', alignItems: 'flex-end', background: 'var(--surface-color)', padding: '1.25rem', borderRadius: 'var(--radius-lg)', border: '1px solid var(--border-color)', boxShadow: 'var(--shadow-sm)' }}>
+    <div className="card" style={{ display: 'flex', flexWrap: 'wrap', gap: '1.5rem', alignItems: 'flex-end', padding: '1.5rem' }}>
       <SelectFilter label="Transaction Type" value={filterType} onChange={setFilterType} options={typeOptions} />
       <SelectFilter label="Category" value={filterCategory} onChange={setFilterCategory} options={categoryOptions} />
       <SelectFilter label="Date Range" value={dateRange} onChange={setDateRange} options={dateOptions} />
