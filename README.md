@@ -116,3 +116,44 @@ src/
   App.jsx
   main.jsx
   index.css
+```
+
+---
+
+## How to Run Locally
+
+Follow these steps to set up and run the SpendWise project on your local machine:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Atharva2710/spendwise-finance-dashboard.git
+   ```
+
+2. **Navigate into the project directory:**
+   ```bash
+   cd spendwise-finance-dashboard
+   ```
+
+3. **Install dependencies:**
+   Make sure you have [Node.js](https://nodejs.org/) installed, then run:
+   ```bash
+   npm install
+   ```
+
+4. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open the App:**
+   Open your browser and navigate to `http://localhost:5173` (or the URL provided in your terminal).
+
+---
+
+## Building for Production
+
+To create a production-ready build, run:
+```bash
+npm run build
+```
+This will compile the application into the `dist` folder.
