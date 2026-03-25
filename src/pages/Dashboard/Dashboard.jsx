@@ -17,8 +17,9 @@ const Dashboard = () => {
   const { transactions } = useTransactions();
   const navigate = useNavigate();
 
-  // Get 5 most recent transactions
+  // Get recent and recurring transactions
   const recentTransactions = transactions.slice(0, 5);
+  const recurringTransactions = transactions.filter(t => t.recurring).slice(0, 5);
 
   // Prepare simple chart data for overview
   const chartData = useMemo(() => {
@@ -60,23 +61,39 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
-          <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--text-main)' }}>Recent Transactions</h3>
-          <Link to="/transactions" style={{ color: 'var(--primary-color)', fontWeight: 600, fontSize: '0.95rem' }}>View All &rarr;</Link>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+        <div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--text-main)' }}>Recent Transactions</h3>
+            <Link to="/transactions" style={{ color: 'var(--primary-color)', fontWeight: 600, fontSize: '0.95rem' }}>View All &rarr;</Link>
+          </div>
+          
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            {recentTransactions.length > 0 ? recentTransactions.map(t => (
+              <TransactionCard key={t.id} transaction={t} onEdit={handleEdit} onDelete={() => navigate('/transactions')} />
+            )) : (
+              <div className="card" style={{ padding: '2rem', textAlign: 'center', color: 'var(--text-muted)' }}>
+                No recent transactions.
+              </div>
+            )}
+          </div>
         </div>
-        
-        {/* Desktop Table View */}
-        <div className="desktop-only" style={{ display: 'none' }}>
-           <TransactionTable transactions={recentTransactions} onEdit={handleEdit} onDelete={() => navigate('/transactions')} />
-        </div>
-        <style>{`@media (min-width: 768px) { .desktop-only { display: block !important; } .mobile-only { display: none !important; } }`}</style>
-        
-        {/* Mobile Card View */}
-        <div className="mobile-only" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          {recentTransactions.map(t => (
-            <TransactionCard key={t.id} transaction={t} onEdit={handleEdit} onDelete={() => navigate('/transactions')} />
-          ))}
+
+        <div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--text-main)' }}>Active Subscriptions</h3>
+            <Link to="/transactions" style={{ color: 'var(--primary-color)', fontWeight: 600, fontSize: '0.95rem' }}>Manage &rarr;</Link>
+          </div>
+          
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            {recurringTransactions.length > 0 ? recurringTransactions.map(t => (
+              <TransactionCard key={t.id} transaction={t} onEdit={handleEdit} onDelete={() => navigate('/transactions')} />
+            )) : (
+              <div className="card" style={{ padding: '2rem', textAlign: 'center', color: 'var(--text-muted)' }}>
+                No active recurring transactions.
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </PageWrapper>
