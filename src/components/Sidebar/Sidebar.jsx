@@ -40,9 +40,9 @@ const Sidebar = () => {
               alignItems: 'center',
               gap: '1rem',
               padding: '0.875rem 1rem',
-              borderRadius: 'var(--radius-md)',
+              borderRadius: 'var(--radius-lg)',
               color: isActive ? 'var(--primary-dark)' : 'var(--text-muted)',
-              background: isActive ? 'var(--bg-color)' : 'transparent',
+              background: isActive ? 'var(--primary-light)' : 'transparent',
               fontWeight: isActive ? 600 : 500,
               transition: 'all 0.2s ease',
             })}

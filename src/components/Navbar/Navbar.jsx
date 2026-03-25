@@ -15,8 +15,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav style={{
-      background: 'var(--surface-color)',
+    <nav className="glass" style={{
       padding: '1rem 1.5rem',
       display: 'flex',
       alignItems: 'center',
@@ -73,9 +72,9 @@ const Navbar = () => {
                   onClick={() => setIsOpen(false)}
                   style={{
                     padding: '0.75rem 1rem',
-                    borderRadius: 'var(--radius-md)',
-                    color: isActive ? 'var(--primary-color)' : 'var(--text-main)',
-                    background: isActive ? 'var(--bg-color)' : 'transparent',
+                    borderRadius: 'var(--radius-lg)',
+                    color: isActive ? 'var(--primary-dark)' : 'var(--text-main)',
+                    background: isActive ? 'var(--primary-light)' : 'transparent',
                     fontWeight: isActive ? 600 : 500,
                   }}
                 >

@@ -43,7 +43,7 @@ const Transactions = () => {
         title="Transactions" 
         subtitle="Manage and track all your income and expenses securely."
         action={
-          <button onClick={() => navigate('/transactions/new')} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'var(--primary-color)', color: 'white', padding: '0.75rem 1.5rem', borderRadius: 'var(--radius-md)', fontWeight: 600, boxShadow: 'var(--shadow-sm)', cursor: 'pointer' }}>
+          <button onClick={() => navigate('/transactions/new')} className="btn btn-primary">
             <FiPlus size={18} /> Add New
           </button>
         }

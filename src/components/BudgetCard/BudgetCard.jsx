@@ -49,7 +49,7 @@ const BudgetCard = ({ totalSpent = 0, monthlyBudget = 0, percentageUsed = 0, isO
           initial={{ width: 0 }}
           animate={{ width: `${Math.min(percentageUsed, 100)}%` }}
           transition={{ duration: 1, ease: "easeOut" }}
-          style={{ height: '100%', background: progressColor }}
+          style={{ height: '100%', background: progressColor, borderRadius: '6px', boxShadow: `0 0 10px ${progressColor}60` }}
         />
       </div>
 

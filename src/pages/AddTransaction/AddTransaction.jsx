@@ -60,7 +60,7 @@ const AddTransaction = () => {
         subtitle="Record a new income or expense"
       />
 
-      <div style={{ background: 'var(--surface-color)', padding: '2rem', borderRadius: 'var(--radius-xl)', border: '1px solid var(--border-color)', boxShadow: 'var(--shadow-sm)' }}>
+      <div className="card" style={{ padding: '2rem' }}>
         <form onSubmit={handleSubmit(onSubmit)} style={{ display: 'grid', gap: '1.5rem' }}>
           
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
@@ -77,13 +77,13 @@ const AddTransaction = () => {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
             <div className="form-group">
               <label>Title</label>
-              <input type="text" {...register('title')} placeholder="e.g. Amazon Shopping" className="form-control" />
+              <input type="text" {...register('title')} placeholder="e.g. Amazon Shopping" className="input-field" />
               {errors.title && <span className="error-text">{errors.title.message}</span>}
             </div>
 
             <div className="form-group">
               <label>Amount (₹)</label>
-              <input type="number" step="0.01" {...register('amount')} placeholder="0.00" className="form-control" />
+              <input type="number" step="0.01" {...register('amount')} placeholder="0.00" className="input-field" />
               {errors.amount && <span className="error-text">{errors.amount.message}</span>}
             </div>
           </div>
@@ -91,7 +91,7 @@ const AddTransaction = () => {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
             <div className="form-group">
               <label>Category</label>
-              <select {...register('category')} className="form-control">
+              <select {...register('category')} className="input-field">
                 <option value="">Select a category</option>
                 {validCategories.map(cat => (
                   <option key={cat} value={cat}>{cat}</option>
@@ -102,14 +102,14 @@ const AddTransaction = () => {
 
             <div className="form-group">
               <label>Date</label>
-              <input type="date" {...register('date')} className="form-control" />
+              <input type="date" {...register('date')} className="input-field" />
               {errors.date && <span className="error-text">{errors.date.message}</span>}
             </div>
           </div>
 
           <div className="form-group">
             <label>Notes (Optional)</label>
-            <textarea {...register('notes')} placeholder="Add any details here" className="form-control" rows="3" />
+            <textarea {...register('notes')} placeholder="Add any details here" className="input-field" rows="3" />
           </div>
 
           <label style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', marginTop: '0.5rem' }}>
@@ -130,9 +130,7 @@ const AddTransaction = () => {
 
       <style>{`
         .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
-        .form-group label { font-size: 0.875rem; font-weight: 500; color: var(--text-main); }
-        .form-control { width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-main); font-size: 1rem; outline: none; transition: border-color 0.2s; box-sizing: border-box; }
-        .form-control:focus { border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1); }
+        .form-group label { font-size: 0.875rem; font-weight: 600; color: var(--text-main); }
         .error-text { color: var(--danger-color); font-size: 0.825rem; margin-top: -0.25rem; font-weight: 500; }
       `}</style>
     </PageWrapper>

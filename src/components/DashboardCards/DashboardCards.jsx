@@ -13,7 +13,8 @@ const Card = ({ title, amount, icon, color, delay }) => (
       padding: '1.5rem',
       display: 'flex',
       alignItems: 'center',
-      gap: '1.5rem'
+      gap: '1.5rem',
+      background: 'linear-gradient(180deg, var(--surface-color) 0%, var(--surface-hover) 100%)'
     }}
   >
     <div style={{
