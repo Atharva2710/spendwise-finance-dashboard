@@ -53,12 +53,6 @@ const Sidebar = () => {
         ))}
       </nav>
 
-      <div style={{ marginTop: 'auto', padding: '1rem', background: 'var(--bg-color)', borderRadius: 'var(--radius-md)', textAlign: 'center' }}>
-        <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginBottom: '0.5rem', fontWeight: 500 }}>College Viva Ready</p>
-        <div style={{ width: '100%', height: '4px', background: 'var(--border-color)', borderRadius: '2px', overflow: 'hidden' }}>
-          <div style={{ width: '100%', height: '100%', background: 'var(--success-color)' }} />
-        </div>
-      </div>
 
       <style>{`
         @media (max-width: 767px) {
