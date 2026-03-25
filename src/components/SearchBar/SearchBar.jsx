@@ -11,9 +11,9 @@ const SearchBar = ({ onSearch, placeholder = "Search title or notes..." }) => {
   }, [debouncedQuery, onSearch]);
 
   return (
-    <div style={{ position: 'relative', width: '100%', maxWidth: '400px' }}>
-      <div style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }}>
-        <FiSearch size={18} />
+    <div style={{ position: 'relative', width: '100%', maxWidth: '500px' }}>
+      <div style={{ position: 'absolute', left: '1.25rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-tertiary)' }}>
+        <FiSearch size={20} />
       </div>
       <input
         type="text"
@@ -21,7 +21,7 @@ const SearchBar = ({ onSearch, placeholder = "Search title or notes..." }) => {
         onChange={(e) => setQuery(e.target.value)}
         placeholder={placeholder}
         className="input-field"
-        style={{ paddingLeft: '2.75rem', paddingRight: '2.5rem' }}
+        style={{ paddingLeft: '3.25rem', paddingRight: '2.5rem' }}
       />
       {query && (
         <button

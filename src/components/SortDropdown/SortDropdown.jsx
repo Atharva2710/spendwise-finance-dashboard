@@ -11,21 +11,12 @@ const SortDropdown = ({ value, onChange }) => {
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-      <label style={{ fontSize: '0.875rem', fontWeight: 500, color: 'var(--text-muted)', whiteSpace: 'nowrap' }}>Sort by:</label>
+      <label style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-muted)', whiteSpace: 'nowrap' }}>Sort by</label>
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        style={{
-          padding: '0.5rem 1rem',
-          borderRadius: 'var(--radius-md)',
-          border: '1px solid var(--border-color)',
-          background: 'var(--surface-color)',
-          color: 'var(--text-main)',
-          outline: 'none',
-          cursor: 'pointer',
-          fontWeight: 500,
-          boxShadow: 'var(--shadow-sm)'
-        }}
+        className="input-field"
+        style={{ padding: '0.625rem 1rem', minWidth: '200px', cursor: 'pointer', boxShadow: 'none' }}
       >
         {sortOptions.map((opt) => (
           <option key={opt.value} value={opt.value}>{opt.label}</option>

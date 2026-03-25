@@ -13,13 +13,13 @@ const TransactionTable = ({ transactions, onEdit, onDelete }) => {
     <div className="card" style={{ overflow: 'hidden' }}>
       <div style={{ overflowX: 'auto' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '600px' }}>
-          <thead style={{ background: 'var(--bg-color)', borderBottom: '1px solid var(--border-color)' }}>
+          <thead style={{ background: 'var(--surface-hover)', borderBottom: '1px solid var(--border-color)' }}>
             <tr>
-              <th style={{ padding: '1rem 1.5rem', color: 'var(--text-muted)', fontWeight: 600, fontSize: '0.875rem' }}>Title & Category</th>
-              <th style={{ padding: '1rem 1.5rem', color: 'var(--text-muted)', fontWeight: 600, fontSize: '0.875rem' }}>Amount</th>
-              <th style={{ padding: '1rem 1.5rem', color: 'var(--text-muted)', fontWeight: 600, fontSize: '0.875rem' }}>Date</th>
-              <th style={{ padding: '1rem 1.5rem', color: 'var(--text-muted)', fontWeight: 600, fontSize: '0.875rem' }}>Notes</th>
-              <th style={{ padding: '1rem 1.5rem', color: 'var(--text-muted)', fontWeight: 600, fontSize: '0.875rem', textAlign: 'right' }}>Actions</th>
+              <th style={{ padding: '1rem 1.5rem', color: 'var(--text-muted)', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Title & Category</th>
+              <th style={{ padding: '1rem 1.5rem', color: 'var(--text-muted)', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Amount</th>
+              <th style={{ padding: '1rem 1.5rem', color: 'var(--text-muted)', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Date</th>
+              <th style={{ padding: '1rem 1.5rem', color: 'var(--text-muted)', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Notes</th>
+              <th style={{ padding: '1rem 1.5rem', color: 'var(--text-muted)', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em', textAlign: 'right' }}>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -28,28 +28,28 @@ const TransactionTable = ({ transactions, onEdit, onDelete }) => {
                 borderBottom: index === transactions.length - 1 ? 'none' : '1px solid var(--border-color)', 
                 transition: 'all 0.2s ease'
               }}>
-                <td style={{ padding: '1rem 1.5rem' }}>
-                  <div style={{ fontWeight: 600, color: 'var(--text-main)', marginBottom: '0.25rem' }}>{t.title}</div>
-                  <div style={{ fontSize: '0.875rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <span style={{ background: 'var(--bg-color)', padding: '0.125rem 0.375rem', borderRadius: '0.25rem' }}>{t.category}</span>
-                    {t.recurring && <span style={{ color: 'var(--primary-color)', display: 'flex', alignItems: 'center' }} title="Recurring"><FiRefreshCw size={12}/></span>}
+                <td style={{ padding: '1.25rem 1.5rem' }}>
+                  <div style={{ fontWeight: 600, color: 'var(--text-main)', marginBottom: '0.375rem', fontSize: '1rem' }}>{t.title}</div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <span className="badge" style={{ background: 'var(--border-light)', color: 'var(--text-muted)' }}>{t.category}</span>
+                    {t.recurring && <span style={{ color: 'var(--primary-color)', display: 'flex', alignItems: 'center', background: 'var(--primary-light)', padding: '0.125rem 0.5rem', borderRadius: '1rem', fontSize: '0.75rem', fontWeight: 600 }} title="Recurring"><FiRefreshCw size={12} style={{marginRight: '0.25rem'}}/> Recurring</span>}
                   </div>
                 </td>
-                <td style={{ padding: '1rem 1.5rem', fontWeight: 600, fontSize: '1.125rem', color: t.type === 'income' ? 'var(--success-color)' : 'var(--text-main)' }}>
+                <td style={{ padding: '1.25rem 1.5rem', fontWeight: 700, fontSize: '1.125rem', color: t.type === 'income' ? 'var(--success-color)' : 'var(--text-main)' }}>
                   {t.type === 'income' ? '+' : '-'}{formatCurrency(t.amount)}
                 </td>
-                <td style={{ padding: '1rem 1.5rem', color: 'var(--text-muted)', fontSize: '0.875rem' }}>
+                <td style={{ padding: '1.25rem 1.5rem', color: 'var(--text-muted)', fontSize: '0.875rem', fontWeight: 500 }}>
                   {formatDate(t.date)}
                 </td>
-                <td style={{ padding: '1rem 1.5rem', color: 'var(--text-muted)', fontSize: '0.875rem', maxWidth: '200px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                  {t.notes || <span style={{ fontStyle: 'italic', opacity: 0.5 }}>None</span>}
+                <td style={{ padding: '1.25rem 1.5rem', color: 'var(--text-muted)', fontSize: '0.875rem', maxWidth: '200px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  {t.notes || <span style={{ fontStyle: 'italic', opacity: 0.5 }}>-</span>}
                 </td>
-                <td style={{ padding: '1rem 1.5rem', textAlign: 'right' }}>
-                  <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.5rem' }}>
-                    <button onClick={() => onEdit(t)} style={{ padding: '0.5rem', color: 'var(--text-muted)', background: 'var(--bg-color)', borderRadius: 'var(--radius-md)', transition: 'background 0.2s', cursor: 'pointer' }}>
+                <td style={{ padding: '1.25rem 1.5rem', textAlign: 'right' }}>
+                  <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.25rem' }}>
+                    <button onClick={() => onEdit(t)} className="btn-icon-only" aria-label="Edit">
                       <FiEdit2 size={16} />
                     </button>
-                    <button onClick={() => onDelete(t.id)} style={{ padding: '0.5rem', color: 'var(--danger-color)', background: 'rgba(239, 68, 68, 0.1)', borderRadius: 'var(--radius-md)', transition: 'background 0.2s', cursor: 'pointer' }}>
+                    <button onClick={() => onDelete(t.id)} className="btn-icon-only" style={{ color: 'var(--danger-color)' }} aria-label="Delete">
                       <FiTrash2 size={16} />
                     </button>
                   </div>

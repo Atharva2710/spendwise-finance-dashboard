@@ -46,11 +46,12 @@ const Sidebar = () => {
               display: 'flex',
               alignItems: 'center',
               gap: '1rem',
-              padding: '0.875rem 1rem',
+              padding: '1rem 1.25rem',
               borderRadius: 'var(--radius-lg)',
               color: isActive ? 'white' : 'var(--text-sidebar)',
               background: isActive ? 'var(--primary-color)' : 'transparent',
               fontWeight: isActive ? 600 : 500,
+              boxShadow: isActive ? '0 4px 12px rgba(79, 70, 229, 0.4)' : 'none',
               transition: 'all 0.2s ease',
             })}
             className="sidebar-link"
@@ -61,14 +62,16 @@ const Sidebar = () => {
         ))}
       </nav>
 
-      <div style={{ marginTop: 'auto', padding: '1.25rem', background: 'var(--bg-sidebar-hover)', borderRadius: 'var(--radius-xl)', border: '1px solid rgba(255,255,255,0.05)' }}>
-        <p style={{ fontSize: '0.75rem', color: 'var(--text-sidebar)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.75rem' }}>Budget Left</p>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '0.5rem' }}>
-          <span style={{ fontSize: '1.25rem', fontWeight: 700, color: 'white' }}>{formatCurrency(remaining > 0 ? remaining : 0)}</span>
-          <span style={{ fontSize: '0.75rem', color: 'var(--text-sidebar)' }}>this month</span>
-        </div>
-        <div style={{ width: '100%', height: '6px', background: 'rgba(255,255,255,0.1)', borderRadius: '3px', overflow: 'hidden' }}>
-          <div style={{ width: `${Math.min((totalSpent / monthlyBudget) * 100 || 0, 100)}%`, height: '100%', background: remaining < 0 ? 'var(--danger-color)' : 'var(--primary-color)' }} />
+      <div style={{ marginTop: 'auto', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+        <div style={{ padding: '1.25rem', background: 'linear-gradient(145deg, var(--bg-sidebar-hover) 0%, rgba(15,23,42,0.5) 100%)', borderRadius: 'var(--radius-xl)', border: '1px solid rgba(255,255,255,0.05)', boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.2)' }}>
+          <p style={{ fontSize: '0.75rem', color: 'var(--text-sidebar)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.75rem' }}>Budget Left</p>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '0.5rem' }}>
+            <span style={{ fontSize: '1.25rem', fontWeight: 700, color: 'white' }}>{formatCurrency(remaining > 0 ? remaining : 0)}</span>
+            <span style={{ fontSize: '0.75rem', color: 'var(--text-sidebar)' }}>this month</span>
+          </div>
+          <div style={{ width: '100%', height: '6px', background: 'rgba(255,255,255,0.05)', borderRadius: '3px', overflow: 'hidden' }}>
+            <div style={{ width: `${Math.min((totalSpent / monthlyBudget) * 100 || 0, 100)}%`, height: '100%', background: remaining < 0 ? 'var(--danger-color)' : 'var(--primary-color)', boxShadow: '0 0 10px var(--primary-color)' }} />
+          </div>
         </div>
       </div>
 
