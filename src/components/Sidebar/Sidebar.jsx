@@ -64,13 +64,27 @@ const Sidebar = () => {
       <div style={{ marginTop: 'auto', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
         <div style={{ padding: '1.25rem', background: 'linear-gradient(145deg, var(--bg-sidebar-hover) 0%, rgba(15,23,42,0.5) 100%)', borderRadius: 'var(--radius-xl)', border: '1px solid rgba(255,255,255,0.05)', boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.2)' }}>
           <p style={{ fontSize: '0.75rem', color: 'var(--text-sidebar)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.75rem' }}>Budget Left</p>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '0.5rem' }}>
-            <span style={{ fontSize: '1.25rem', fontWeight: 700, color: 'white' }}>{formatCurrency(remaining > 0 ? remaining : 0)}</span>
-            <span style={{ fontSize: '0.75rem', color: 'var(--text-sidebar)' }}>this month</span>
-          </div>
-          <div style={{ width: '100%', height: '6px', background: 'rgba(255,255,255,0.05)', borderRadius: '3px', overflow: 'hidden' }}>
-            <div style={{ width: `${Math.min((totalSpent / monthlyBudget) * 100 || 0, 100)}%`, height: '100%', background: remaining < 0 ? 'var(--danger-color)' : 'var(--primary-color)', boxShadow: '0 0 10px var(--primary-color)' }} />
-          </div>
+          
+          {monthlyBudget > 0 ? (
+            <>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '0.5rem' }}>
+                <span style={{ fontSize: '1.25rem', fontWeight: 700, color: remaining < 0 ? 'var(--danger-color)' : 'white' }}>
+                  {formatCurrency(remaining)}
+                </span>
+                <span style={{ fontSize: '0.75rem', color: 'var(--text-sidebar)' }}>this month</span>
+              </div>
+              <div style={{ width: '100%', height: '6px', background: 'rgba(255,255,255,0.05)', borderRadius: '3px', overflow: 'hidden' }}>
+                <div style={{ width: `${Math.min((totalSpent / monthlyBudget) * 100 || 0, 100)}%`, height: '100%', background: remaining < 0 ? 'var(--danger-color)' : 'var(--success-color)', boxShadow: remaining < 0 ? '0 0 10px var(--danger-color)' : '0 0 10px var(--success-color)' }} />
+              </div>
+            </>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+               <span style={{ fontSize: '0.825rem', color: 'var(--text-sidebar)', lineHeight: 1.4 }}>No active budget allocated for this month.</span>
+               <NavLink to="/budget" style={{ padding: '0.625rem', background: 'var(--primary-color)', color: 'white', fontSize: '0.85rem', fontWeight: 600, borderRadius: 'var(--radius-md)', textAlign: 'center', transition: 'background 0.2s', boxShadow: '0 2px 8px rgba(79, 70, 229, 0.3)' }}>
+                 Set Monthly Budget
+               </NavLink>
+            </div>
+          )}
         </div>
       </div>
 
