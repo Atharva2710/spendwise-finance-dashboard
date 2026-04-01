@@ -3,6 +3,13 @@ import { subDays } from 'date-fns';
 
 const today = new Date();
 
+// Helper to ensure sample data always falls smoothly within the current calendar month
+const getSampleDate = (day) => {
+  const d = new Date(today);
+  d.setDate(day);
+  return d.toISOString();
+};
+
 export const sampleTransactions = [
   {
     id: uuidv4(),
@@ -10,7 +17,7 @@ export const sampleTransactions = [
     amount: 85000,
     category: 'Salary',
     type: 'income',
-    date: subDays(today, 2).toISOString(),
+    date: getSampleDate(1), // 1st of the month
     notes: 'Base salary for the month',
     recurring: true
   },
@@ -20,7 +27,7 @@ export const sampleTransactions = [
     amount: 15000,
     category: 'Freelance Payment',
     type: 'income',
-    date: subDays(today, 10).toISOString(),
+    date: getSampleDate(10),
     notes: 'Website design project',
     recurring: false
   },
@@ -30,7 +37,7 @@ export const sampleTransactions = [
     amount: 25000,
     category: 'Rent',
     type: 'expense',
-    date: subDays(today, 3).toISOString(),
+    date: getSampleDate(2),
     notes: 'Monthly apartment rent',
     recurring: true
   },
@@ -40,7 +47,7 @@ export const sampleTransactions = [
     amount: 850,
     category: 'Food Order',
     type: 'expense',
-    date: subDays(today, 1).toISOString(),
+    date: getSampleDate(5),
     notes: 'Dinner from Swiggy',
     recurring: false
   },
@@ -50,7 +57,7 @@ export const sampleTransactions = [
     amount: 350,
     category: 'Uber Ride',
     type: 'expense',
-    date: subDays(today, 2).toISOString(),
+    date: getSampleDate(6),
     notes: 'Ride to office',
     recurring: false
   },
@@ -60,7 +67,7 @@ export const sampleTransactions = [
     amount: 649,
     category: 'Netflix Subscription',
     type: 'expense',
-    date: subDays(today, 5).toISOString(),
+    date: getSampleDate(7),
     notes: 'Premium plan',
     recurring: true
   },
@@ -70,7 +77,7 @@ export const sampleTransactions = [
     amount: 4500,
     category: 'Shopping',
     type: 'expense',
-    date: subDays(today, 8).toISOString(),
+    date: getSampleDate(15),
     notes: 'New clothes',
     recurring: false
   },
@@ -80,7 +87,7 @@ export const sampleTransactions = [
     amount: 1500,
     category: 'Gym Membership',
     type: 'expense',
-    date: subDays(today, 12).toISOString(),
+    date: getSampleDate(20),
     notes: 'Monthly fee',
     recurring: true
   }

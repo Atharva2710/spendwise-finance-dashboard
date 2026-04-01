@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import BudgetCard from '../../components/BudgetCard/BudgetCard';
 import useBudget from '../../hooks/useBudget';
@@ -25,6 +26,11 @@ const Budget = () => {
       <PageHeader 
         title="Budget Setup" 
         subtitle="Manage your monthly spending constraints"
+        action={
+          <Link to="/dashboard" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'var(--surface-color)', border: '1px solid var(--border-color)', color: 'var(--text-main)', padding: '0.5rem 1rem', borderRadius: 'var(--radius-md)', fontWeight: 600, textDecoration: 'none' }}>
+            &larr; Back to Dashboard
+          </Link>
+        }
       />
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>

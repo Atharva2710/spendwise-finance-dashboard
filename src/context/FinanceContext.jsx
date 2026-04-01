@@ -5,7 +5,7 @@ export const FinanceContext = createContext();
 
 export const FinanceProvider = ({ children }) => {
   const [transactions, setTransactions] = useState(() => {
-    const saved = localStorage.getItem('spendwise_transactions');
+    const saved = localStorage.getItem('spendwise_transactions_v3');
     if (saved) {
       try {
         return JSON.parse(saved);
@@ -17,7 +17,7 @@ export const FinanceProvider = ({ children }) => {
   });
 
   const [budget, setBudget] = useState(() => {
-    const saved = localStorage.getItem('spendwise_budget');
+    const saved = localStorage.getItem('spendwise_budget_v3');
     if (saved) {
       try {
         return JSON.parse(saved);
@@ -28,13 +28,22 @@ export const FinanceProvider = ({ children }) => {
     return sampleBudget;
   });
 
+  // Force overwrite of data when my code updates the sample data structure
+  useEffect(() => {
+    if (localStorage.getItem('spendwise_version') !== '3') {
+      setTransactions(sampleTransactions);
+      setBudget(sampleBudget);
+      localStorage.setItem('spendwise_version', '3');
+    }
+  }, []);
+
   // Persist to localStorage whenever state changes
   useEffect(() => {
-    localStorage.setItem('spendwise_transactions', JSON.stringify(transactions));
+    localStorage.setItem('spendwise_transactions_v3', JSON.stringify(transactions));
   }, [transactions]);
 
   useEffect(() => {
-    localStorage.setItem('spendwise_budget', JSON.stringify(budget));
+    localStorage.setItem('spendwise_budget_v3', JSON.stringify(budget));
   }, [budget]);
 
   const addTransaction = (transaction) => {

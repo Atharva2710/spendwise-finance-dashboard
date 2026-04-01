@@ -50,7 +50,7 @@ const AddTransaction = () => {
     
     addTransaction(newTransaction);
     toast.success('Transaction added successfully!');
-    navigate('/transactions');
+    navigate('/dashboard');
   };
 
   return (

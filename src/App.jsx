@@ -16,9 +16,9 @@ import Budget from './pages/Budget/Budget';
 import Analytics from './pages/Analytics/Analytics';
 
 const Layout = ({ children }) => (
-  <div className="app-container">
+  <div className="app-container" style={{ height: '100vh', overflow: 'hidden' }}>
     <Sidebar />
-    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0, minHeight: '100vh', background: 'var(--bg-color)' }}>
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0, height: '100vh', background: 'var(--bg-main)' }}>
       <Navbar />
       <main className="main-content" style={{ padding: '2rem', flex: 1, overflowY: 'auto' }}>
         {children}
